@@ -1,0 +1,105 @@
+4 Basic Best Practices for Python Development
+Before digging into Python development, there are four fundamental pillars you should focus on: formatting and syntax, documentation, testing, and naming conventions. Each of these Python coding standards and best practices supports the development process by laying the foundation for more advanced concepts.
+
+1. Formatting & Syntax Best Practices
+One of the easiest ways to ensure code quality is by following the PEP8 Python coding style guide for formatting and syntax. Consistent code formatting makes your code easy to read and understand, easy to maintain, reduces errors, and makes it easier to collaborate. This involves best practices around stylistic choices such as indentation, line spacing, use of white space, and comments.
+
+Indentation Guidelines
+Python best practices for code quality include using four spaces for each indentation level. It also outlines that tabs and white spaces should not be intermixed (spaces should be used, not tabs). And lastly, indent consistently from start to finish.
+
+Line Spacing
+Line spacing guidelines for Python include using blank lines sparingly. Top-level functions and class definitions should be separated with two blank lines while method definitions should be separated by one. 
+
+These guidelines also indicate that lines should be kept reasonably short, around 79 characters (though some coders prefer 99-119). Lastly, line breaks should be used with care and incorporate things like parentheses, brackets, backslashes, and braces to break up longer strings of code.
+
+White Space Usage
+PEP 8 indicates to avoid trailing whitespace on all lines, except those that are otherwise blank. It also directs to use spaces around binary operators, such as equal signs, brackets, etc. You should also avoid extra whitespace, ensuring not to place them inside brackets or before commas.
+
+Comments
+Comments are another important part of basic Python best practices, as they provide insights into each piece of code. Keeping comments up-to-date is crucial, as outdated comments can be worse than having none at all. 
+
+Comments should be used to explain why the code is the way it is or the problem it’s solving, rather than detailing what it does. Comments should be written using docstrings, when applicable, as they can tie the code to a module, function, or class. And lastly, inline comments should be used sparingly and separated by at least two spaces from the statement, starting with a hashtag and a single space and indented to the same level for each line.
+
+Tools to Enforce These Guidelines
+Various tools can help enforce these standards, such as PEP8 checkers and formatters, linters, and integrated development environments (IDEs). Some popular PEP8 checkers include Pylint and Flake8. Popular auto formatters include Black and YAPF. Common IDEs include PyCharm, Sublime Text, and Visual Studio Code.
+
+2. Documentation Best Practices
+Clear, current, and comprehensive documentation is a cornerstone of maintainable code. This extends beyond simple comments within your codebase, including module-level docstrings, function, and method explanations, plus context for more complex blocks of code. Here are some Python coding best practices when it comes to documentation:
+
+Write docstrings for all public modules, functions, classes, and methods.
+Follow docstring conventions as outlined by PEP 257.
+Keep docstrings current to the code.
+Don’t be redundant when documenting simple code.
+Use type hints with Python 3.5.
+Include examples when documenting more complex functions or methods.
+Use Automated documentation generators, like Sphinx and Doxygen.
+When to Use Automated Documentation Generators
+These handy tools create documentation automatically using your source code. This can save developers considerable time and effort. Some examples of when Python automated documentation generators come in handy may include when you’re using large or complex code bases, working on a collaborative project, using public APIs or libraries, working on open-source projects, and more.
+
+Why Good Documentation Is Important
+Documentation is a critical component of Python coding standards and best practices because it helps explain what the code does, how it does it, and why it was written that way. This is most helpful for complex sections of code where the functionality might not be immediately apparent, or when code can be done multiple ways but a certain way was selected. It supports code understandability, maintenance, collaboration, debugging, and long-term sustainability.
+
+3. Testing Best Practices
+Testing your code is yet another essential component of Python best practices for code quality. It ensures a quality completed code, can help catch bugs early, and ensures the code behaves as expected. You can utilize automated testing libraries and frameworks as well as best practices to ensure you’re testing effectively.
+
+Write Clear, Simple, and Small Tests Early and Frequently. Try writing your tests before writing your code, using the test-driven development (TDD) method and ensure each test is designed to verify a single behavior.
+Use Consistent Testing Methodology. Choose a testing method that works best for your unique project and stick with that testing module for the entire project.
+Automate Your Testing. Automated tests help you catch bugs early, ensure that your code works as expected, and protect against regressions. To write effective tests, you can use one of the many libraries or frameworks available. Unitest and Pytest are popular choices.
+Test Edge Cases and Failure Modes. Testing all aspects of the code, including failure points, will help ensure your code can handle all situations.
+Perform Isolated Testing. Use mock and stub objects to mimic the behavior of more complex objects to help isolate the component that needs testing.
+Aim for High Test Coverage. Tools like coverage.py can help you measure how much of your code is being tested. The more you test, the better.
+4. Naming Conventions Best Practices
+Naming conventions will also help keep your code consistent and easy to understand and maintain. Python outlines established conventions for naming variables, functions, classes, and modules in their PEP8 guidelines. Names should be self-explanatory, and describe the information in a descriptive way. Some of the Python coding standards and best practices for naming conventions include:
+
+Variables & Functions: use all lowercase letters and separate words with underscores.
+Classes: use CapWords/CamelCase, using a capital letter for each new word but not separating the words by spaces or underscores.
+Constants: use all caps.
+Modules: use all lowercase. Add underscores between words if it improves readability.
+Methods: use the function naming rules but indicate internal use methods by adding an underscore before the name.
+Single-Character Names: avoid using these altogether.
+Built-In Names: avoid using the Python built-in names, such as naming a variable “list.”
+4 More Advanced Best Practices for Python Development
+Once you've mastered the basics, you can move on to more advanced practices. These involve code organization, performance optimization, security, and scalability. They help manage more complex projects and prepare your code for production environments.
+
+1. Code Organization Best Practices
+As your projects get larger and more complex, organizing your code becomes even more important. This involves thoughtfully structuring your files and directories, using modules and packages effectively, and following established design patterns. Following the Python best practices for organization will help ensure your code maintains readability and is easier to debug and modify.
+
+Group Related Files. Use modules and packages to organize your code into different groups. A module is a file that will house Python code while a package groups related modules together.
+Mark Directories as Python Packages. Use init.py files to indicate your directory is a Python package and use it to execute package initiation code or to specify API.
+Use Import Statements. Import statements allow you to use code from one module to another. This is useful for splitting your codebase into logical groups.
+D.R.Y. Code (Don’t Repeat Yourself). If you find yourself writing the same code in multiple places, you should organize it into a function or class that can be reused more efficiently while also reducing the probability for errors.
+Use a Defined Structure. Structuring larger projects also helps keep them organized.
+Relative Imports. Relative imports let you reference code from one module to another.
+2. Performance Optimization Best Practices
+While Python may not be the fastest programming language, there are several ways you can optimize the code for better performance. This includes writing efficient code by avoiding unnecessary calculations, making good use of data structures and algorithms, and using tools and libraries designed for performance. Make Python better by using the performance best practices below:
+
+Use Built-In Functions and Libraries. Built-in features are already optimized for performance, so use them whenever possible.
+Use Local Variables. Local variables are faster than global variables.
+Use List Comprehensions and Generators. These are both faster and use less memory than equivalent code written in loops.
+Use “Slots” in Classes. Use this function to use less memory when creating multiple instances of a class.
+Avoid Excess/Unnecessary Data Structures. Use the code that, as simply as possible, will perform what you need it to. Avoid using options that also perform other functions.
+How to Measure & Improve Python Performance
+The performance of your Python code can be measured using various modules and libraries. One popular one is the built-in “timeit” module that measures execution time in small bits to help find bottlenecks. You can also try NumPy and Pandas, which provide precompiled functions for numerical tasks quickly. For slow code, you can use Cython to help gain substantial improvements.
+
+3. Security Best Practices
+Security should be a priority in any development project. This means writing secure code, handling sensitive data carefully, and using libraries and tools that help protect against common vulnerabilities. Libraries such as PyCrypto and requests for secure HTTP communication can help you secure your Python applications. Python coding standards and best practices for security include:
+
+Input Validation. Validate and sanitize all user input to help protect against SQL injection and cross-site scripting.
+Secure Library Use. Only use secure and well-maintained Python libraries when it comes to tasks related to security.
+HTTPS for Web Apps. Always use HTTPS instead of HTTP when building a web application to ensure data is encrypted.
+Limit Exec and Eval Use. These functions can execute arbitrary code, which can be a security risk.
+Don’t Hard Code Sensitive Information. Never include private information in the hard code; use variables or secure configuration files instead.
+Why Python Security Is Important
+Security when creating code of any kind, including Python, is paramount. For one, it ensures data protection for sensitive information, such as personal details and financial information. It also helps secure system integrity and instill trust in users. Adhering to code security standards also ensures legal compliance with regulations like GDPR and HIPAA.
+
+Popular Secure Python Libraries
+Using secure libraries will help protect your code from malicious attacks. Some of the most popular and best secure Python libraries include pyOpenSSL for SSL/TLS protocol, bcrypt for password hashing, Paramiko for SSH2 protocol, and cryptography for primitives.
+
+4. Scalability Best Practices
+Finally, as your application grows, you should also be thinking about scalability. This means designing your systems to handle increased loads effectively, organizing your code for large code bases, and leveraging Python's features and libraries that help with scalability. Here are some Python best practices for scalability:
+
+Use Efficient Data Structures and Algorithms. Choosing the right data structures and algorithms can greatly affect the scalability of your program.
+Concurrent and Parallel Execution. Python has several libraries, such as concurrent futures and multiprocessing, that allow for concurrent or parallel execution of tasks to utilize multiple CPU cores and threads.
+Asynchronous Processing. For I/O-bound tasks, using asynchronous processing can make your program more scalable. Python's asyncio library provides tools for writing single-threaded concurrent code.
+Cache Data. Caching can improve your application's performance and scalability by storing the result of expensive operations and reusing them.
+Use a Load Balancer. For web applications, use a load balancer to distribute traffic among multiple instances of your application.

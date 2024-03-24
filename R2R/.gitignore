@@ -1,0 +1,15 @@
+.env*
+.DS_Store
+
+logs/
+workspace/
+uploads/
+
+**/__pycache__
+
+.next
+node_modules
+
+
+**/*.sqlite
+**/*.sqlite3

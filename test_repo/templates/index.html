@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <a href="{{ url_for('routes.task_details', task_id=loop.index0) }}">{{ task.title }}</a>
+                {% if task.completed %}
+                    (Completed)
+                {% else %}
+                    (<a href="{{ url_for('routes.complete_task', task_id=loop.index0) }}">Mark as Completed</a>)
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('routes.create_task') }}">Create New Task</a>
+{% endblock %}

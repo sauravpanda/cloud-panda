@@ -1,0 +1,71 @@
+[build-system]
+requires = ["poetry-core", "setuptools", "wheel"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "r2r"
+version = "0.1.26"
+description = "SciPhi R2R"
+authors = ["Owen Colegrove <owen@sciphi.ai>"]
+license = "MIT"
+readme = "README.md"
+include = ["config.json"]
+
+[tool.poetry.dependencies]
+# Python Versions
+python = ">=3.9,<3.13"
+
+# Required dependencies
+fastapi = "^0.109.2"
+fire = "^0.5.0"
+gunicorn = "^21.2.0"
+litellm = "^1.28.0"
+openai = "^1.11.1"
+pydantic = "^2.6.3"
+python-dotenv = "^1.0.1"
+python-multipart = "^0.0.9"
+requests = "^2.31.0"
+types-requests = "^2.31.0.20240125"
+uvicorn = "^0.27.0.post1"
+vecs = "^0.4.0"
+
+# Optional dependencies
+bs4 = {version = "^0.0.2", optional = true}
+pypdf = {version = "^4.0.2", optional = true}
+tiktoken = {version = "^0.5.2", optional = true}
+datasets = {version = "^2.16.1", optional = true}
+qdrant_client = {version = "^1.7.0", optional = true}
+psycopg2-binary = {version = "^2.9.9", optional = true}
+numpy = {version = "^1.26.4", optional = true}
+scikit-learn = {version = "^1.4.1.post1", optional = true}
+sentry-sdk = {version = "^1.40.4", optional = true}
+deepeval = {version ="^0.20.88", optional = true}
+parea-ai = {version = "^0.2.86", optional = true}
+
+[tool.poetry.extras]
+parsing = ["bs4", "pypdf"]
+embedding = ["tiktoken"]
+streaming = ["datasets"]
+qdrant = ["qdrant_client"]
+postgres = ["psycopg2-binary"]
+local_vectordb = ["numpy", "scikit-learn"]
+monitoring = ["sentry-sdk"]
+eval = ["deepeval", "parea-ai"]
+all = ["bs4", "pypdf", "tiktoken", "datasets", "qdrant_client", "psycopg2-binary", "numpy", "scikit-learn", "sentry-sdk", "protobuf", "deepeval", "parea-ai"]
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+flake8 = "6.1.0"
+isort = "5.12.0"
+mypy = "^1.5.1"
+
+[tool.black]
+line-length = 79
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = 'playground/.*|deprecated/.*|dump/.*|docs/source|vecs/*'
+
+[[tool.mypy.overrides]]
+module = "yaml"
+ignore_missing_imports = true

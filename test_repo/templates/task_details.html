@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Task Details</h2>
+    <h3>{{ task.title }}</h3>
+    <p>Description: {{ task.description }}</p>
+    <p>Assignee: {{ task.assignee }}</p>
+    <p>Status: {% if task.completed %}Completed{% else %}Pending{% endif %}</p>
+    <a href="{{ url_for('routes.index') }}">Back to Task List</a>
+{% endblock %}

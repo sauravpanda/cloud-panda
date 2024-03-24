@@ -1,0 +1,283 @@
+Relevance of Documenting your Project
+Documentation is an essential part of any project you work on, irrespective of the programming language you use. A project having an application consisting of various API's up and running being used by many users but without documentation would be deemed incomplete. For a second, imagine yourself as a developer, how would you feel if you wanted to replicate a project or use some aspect of a project that does not have any documentation? I am sure you would have a hard time integrating it with your architecture.
+
+Better documentation will make your project more successful because you know that when you share the project or the software with the world, you would like the world to use it, especially when it's an open-source project the goal would be even more. You would also want the community to contribute to your project and make it better.
+
+The well-known author of Python programming language quotes that Code is more often read than written. This quote should highlight the importance documentation has on your code or project being implemented by others.
+
+Imagine yourself as an employee of XYZ company, you are serving your notice period, and your manager would like you to transfer that project to your colleague. You might give him a KT (knowledge transfer), but what if your colleague fails to execute one of the codes from the project successfully? There could be several reasons as to why the code doesn't work, maybe the binaries your code runs on doesn't match with the binaries of the current OS.
+
+What exactly is a Documentation?
+Documentation has several components attached to it. It needs to be well-structured around these components and adhere to those components to be considered proper documentation.
+
+On an abstract level, the components are:
+
+Making sure the codebase of your project is well commented.
+
+It follows Python's PEP-8 coding standards.
+
+Concrete tutorials about how the project was built, especially when its an open-source project developed for a learning-oriented purpose.
+
+A guide on how to install the necessary packages, modules used to build the software, a technical specification sheet if the project also includes any hardware. For example, how to install anaconda, TensorFlow, Keras, etc.
+
+Several discussions on the project's progress at each time step that could have led to the successful implementation of the software.
+
+Reference material that provides a technical description of the technology stack used during the development phase.
+
+The architectural design of the project or the software solution.
+
+These points are just some of the components that could exist in a well-structured and a perfect looking document. It is important to keep all these components distinct, which would also make it easier to maintain the documentation in the future.
+
+An example of comprehensive documentation that has most of the components we discussed would be similar to the one as shown below:
+
+django
+Django's Documentation</a
+A lot of people often get confused between commenting & documenting and consider them similar. Commenting is used to describe your code to the user, maintainer, and even for your self as a future reference. Commenting only works at the code-level and can be categorized as a subset of documentation. Comments help guide the reader to:
+
+understand your code,
+make it self-explanatory, and
+understand its purpose and design.
+It is important to remember that since Python follows the PEP-8 coding standards, even comments have to adhere to those standards. The official Python documentation states that flowing long blocks of text with fewer structural restrictions (docstrings or comments), the line length should be limited to 72 characters.
+
+To check whether your code adheres to the PEP-8 standards, you can use the pylint module of Python. This module can be used to modify the character limit for comments and all other lines of code.
+
+Let's see a couple of examples.
+
+Importing module description
+
+import tensorflow as tf
+#imports tensorflow as tf. Tensorflow is an n-dimensional matrix.
+#just like a 1-D vector, 2-D array, 3-D array etc.
+
+ OpenAI
+Variable definition description
+
+n_classes = 10 # MNIST total classes (0-9 digits)
+
+ OpenAI
+For a more in-depth understanding of commenting and its do's & don'ts, check out this helpful post.
+
+Let's now learn how docstrings can help in documenting your project codebase.
+
+Docstrings for Documenting Python Code
+Python Docstring is the documentation string that is string literal, and it occurs in the class, module, function, or method definition, and is written as a first statement. Docstrings are accessible from the doc attribute (__doc__) for any of the Python objects, and also with the built-in help() function can come in handy.
+
+Also, Docstrings are great for understanding the functionality of the larger part of the code, i.e., the general purpose of any class, module, or function. In contrast, the comments are used for code, statement, and expressions, which tend to be small. They are a descriptive text written by a programmer mainly for themselves to know what the line of code or expression does and also for the developer who wishes to contribute to that project. It is an essential part that documenting your code is going to serve well enough for writing clean code and well-written programs. Though already mentioned, there are no standards and rules for doing so.
+
+There are two forms of writing a Docstring: one-line Docstrings and multi-line Docstrings. These are the documentation that is used by Data Scientists/programmers in their projects.
+
+The one-line Docstrings are the Docstrings, which fits all in one line. You can use one of the quotes, i.e., triple single or triple-double quotes, opening quotes, and closing quotes need to be the same. In the one-line Docstrings, closing quotes are in the same line as with the opening quotes. Also, the standard convention is to use the triple-double quotes.
+
+def square(a):
+    '''Returned argument a is squared.'''
+    return a**a
+
+print (square.__doc__)
+
+
+help(square)
+
+ OpenAI
+
+Returned argument a is squared.
+Help on function square in module __main__:
+
+square(a)
+    Returned argument a is squared.
+
+ OpenAI
+Multi-line Docstrings also contains the same string literals line as in One-line Docstrings, but it is followed by a single blank along with the descriptive text.
+
+def some_function(argument1):
+    """Summary or Description of the Function
+
+    Parameters:
+    argument1 (int): Description of arg1
+
+    Returns:
+    int:Returning value
+
+   """
+
+    return argument1
+
+print(some_function.__doc__)
+
+ OpenAI
+
+Summary or Description of the Function
+
+    Parameters:
+    argument1 (int): Description of arg1
+
+    Returns:
+    int:Returning value
+
+ OpenAI
+docstring
+Renowned Docstring Formats</a
+From the above table, let's pick Pydoc as one of the docstring formats and explore it a bit.
+
+As you learned that docstrings are accessible through the built-in Python __doc__ attribute and the help() function. You could also make use of the built-in module known as Pydoc, which is very different in terms of the features & functionalities it possesses when compared to the doc attribute and the help function.
+
+Pydoc is a tool that would come handy when you want to share the code with your colleagues or make it open-source, in which case you would be targeting a much wider audience. It could generate web pages from your Python documentation and can also launch a web server.
+
+Let's see how it works.
+
+The easiest and convenient way to run the Pydoc module is to run it as a script. To run it inside a jupyter lab cell, you would make use of the exclamation mark (!) character.
+
+
+!python -m pydoc
+
+ OpenAI
+
+pydoc - the Python documentation tool
+
+pydoc <name> ...
+    Show text documentation on something.  <name> may be the name of a
+    Python keyword, topic, function, module, or package, or a dotted
+    reference to a class or function within a module or module in a
+    package.  If <name> contains a '\', it is used as the path to a
+    Python source file to document. If name is 'keywords', 'topics',
+    or 'modules', a listing of these things is displayed.
+
+pydoc -k <keyword>
+    Search for a keyword in the synopsis lines of all available modules.
+
+pydoc -n <hostname>
+    Start an HTTP server with the given hostname (default: localhost).
+
+pydoc -p <port>
+    Start an HTTP server on the given port on the local machine.  Port
+    number 0 can be used to get an arbitrary unused port.
+
+pydoc -b
+    Start an HTTP server on an arbitrary unused port and open a Web browser
+    to interactively browse documentation.  This option can be used in
+    combination with -n and/or -p.
+
+pydoc -w <name> ...
+    Write out the HTML documentation for a module to a file in the current
+    directory.  If <name> contains a '\', it is treated as a filename; if
+    it names a directory, documentation is written for all the contents.
+
+ OpenAI
+If you look at the above output, the very first use of Pydoc is to show text documentation on a function, module, class, etc. so let's see how you can leverage that better than the help function.
+
+
+!python -m pydoc glob
+
+ OpenAI
+
+Help on module glob:
+
+NAME
+    glob - Filename globbing utility.
+
+MODULE REFERENCE
+    https://docs.python.org/3.7/library/glob
+
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+FUNCTIONS
+    escape(pathname)
+        Escape all special characters.
+
+    glob(pathname, *, recursive=False)
+        Return a list of paths matching a pathname pattern.
+
+        The pattern may contain simple shell-style wildcards a la
+        fnmatch. However, unlike fnmatch, filenames starting with a
+        dot are special cases that are not matched by '*' and '?'
+        patterns.
+
+        If recursive is true, the pattern '**' will match any files and
+        zero or more directories and subdirectories.
+
+    iglob(pathname, *, recursive=False)
+        Return an iterator which yields the paths matching a pathname pattern.
+
+        The pattern may contain simple shell-style wildcards a la
+        fnmatch. However, unlike fnmatch, filenames starting with a
+        dot are special cases that are not matched by '*' and '?'
+        patterns.
+
+        If recursive is true, the pattern '**' will match any files and
+        zero or more directories and subdirectories.
+
+DATA
+    __all__ = ['glob', 'iglob', 'escape']
+
+FILE
+    c:\users\hda3kor\.conda\envs\test\lib\glob.py
+
+ OpenAI
+Now, let's extract the glob documentation using the help function.
+
+
+help(glob)
+
+ OpenAI
+
+---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+<ipython-input-13-6f504109e3a2> in <module>
+----> 1 help(glob)
+
+
+NameError: name 'glob' is not defined
+
+ OpenAI
+Well, as you can see, it throws a name error as glob is not defined. So for you to use the help function for extracting the documentation, you need first to import that module, which is not the case in Pydoc.
+
+Let's explore the most interesting feature of the Pydoc module, i.e., running Pydoc as a web service.
+
+To do this, you would simply run the Pydoc as a script but with a -b argument which will start an HTTP server on an arbitrary unused port and open a Web browser to browse documentation interactively. This is helpful, especially when you have various other services running on your system, and you do not remember which port would be in an idle state.
+
+
+!python -m pydoc -b
+
+ OpenAI
+
+^C
+
+ OpenAI
+The moment you run the above cell, a new window will open on an arbitrary port number, and the web browser will look similar to the one shown below.
+
+web browser
+Let's look at the documentation of the h5py module, which is a file format used to store weights of neural network architecture.
+
+web browser
+Essentials while Documenting Python Projects
+Irrespective of the goal, vision, and project purpose, the documentation of every project remains more or less the same. The project could fall under the following categories:
+
+Private ( personal ) Project: Could be for portfolio building or working as a freelancer maintaining a GitHub repository.
+
+Collaborative ( team) Projects: Could be a project being run at your organization or working on a Kaggle competition.
+
+Open-source Projects: Open Source projects are mainly focused on being shared with a broad audience. It expects collaboration, contributions, and maintainability of the codebase and documentation in a longer run.
+
+Even though the above three categories of projects have different visions, the documentation template could be shared across all kinds of projects.
+
+Let's say you are working on an open-source project and are required to create a GitHub repository for it which should have detailed documentation updated regularly, following are the essential points you need to keep in mind:
+
+Requirements file: A lot of time, authors tend to forget this, but the requirements file is very important. It helps the users to reproduce your code quickly. It is usually a text file that contains all the packages, modules along with their respective versions that were used in the project. Requirements can even be mentioned in the Readme file, but having it separately is always better since the user can just run that file with a pip command, and all the dependencies are then installed on their respective system.
+
+Readme: Readme file is usually a markdown file format, which also serves as the backbone for many projects. A summary of the project, its features, and its purpose with a nice logo. It shall include instructions for installing or operating the project. Additionally, add any significant changes since the previous version. Testing scripts or like a quick tour on running their code successfully within the Readme gives more confidence to the user to pursue your project. It could also highlight the potential problems the users could face.
+
+How to Collaborate: It is important, especially when you are working on open-source projects. This should include how new collaborators could contribute to the project. This includes developing new features, fixing known bugs, adding documentation, adding new tests, or reporting issues. The collaborators could even release a v2.0 of the same project and take the project to greater heights.
+
+License: A plaintext file that describes the license your project is using. Especially crucial for open-source projects, licenses like Boost, Apache, MIT, etc. This informs the user whether the project is free to be used commercially or up to what extent.
+
+Tasks assignment: If you are working on a shared project like Kaggle, you could define the tasks each member is assigned, and the progress level of the task. This helps keep track of the overall progress made in the project.
+
+Framework Re-usability: This plays a vital role in a shared project like Kaggle wherein your teammates could reuse what you might have built, which could save a lot of the time. For example, data preprocessing pipeline, data cross-validation script, etc.
+
+A highly recommended documentation that is very well structured and could potentially be a perfect example of how an open-source project shall look like then do check out huggingface transformers GitHub repository.
+
