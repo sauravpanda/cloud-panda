@@ -87,34 +87,37 @@ def handle_webhook():
     elif event == 'pull_request':
         # Handle pull request event
         action = payload['action']
-        pull_request_number = payload['pull_request']['number']
-        # Perform desired actions based on the pull request event data
-        print(f'Received pull request event with action: {action}')
-        print(f'Pull request number: {pull_request_number}')
-        repo_owner = payload["repository"]["owner"]["login"]
-        repo_name = payload["repository"]["name"]
-        pull_number = payload["pull_request"]["number"]
-        print("Running code review")
+        if action == 'opened':
+            pull_request_number = payload['pull_request']['number']
+            # Perform desired actions based on the pull request event data
+            print(f'Received pull request event with action: {action}')
+            print(f'Pull request number: {pull_request_number}')
+            repo_owner = payload["repository"]["owner"]["login"]
+            repo_name = payload["repository"]["name"]
+            pull_number = payload["pull_request"]["number"]
+            print("Running code review")
 
-        helpers.review_code(payload, get_installation_access_token(installation_id))
+            helpers.review_code(payload, get_installation_access_token(installation_id))
         
         # Add your custom logic here
 
-    elif payload['action'] == 'created' and 'comment' in payload:
+    elif payload['action'] == 'created' and 'issue' in payload:
         # Extract relevant information from the payload
-        helpers.reply_to_comment(payload, get_installation_access_token(installation_id))
-    elif payload['action'] == 'opened' and 'issue' in payload:
-        issue_number = payload['issue']['number']
-        issue_title = payload['issue']['title']
-        issue_body = payload['issue']['body']
-
-        if "CREATE" in title:
-            helpers.create_files(payload, get_installation_access_token(installation_id))
-        elif "DOC" in title:
-            helpers.document_code(payload, get_installation_access_token(installation_id))
-    # elif payload["action"] == "opened" or payload["action"] == "synchronize":
+        repo_name = payload["repository"]["name"]
+        if "R2R" in repo_name:
+            helpers.reply_to_r2r_comments(payload, get_installation_access_token(installation_id))
+        else:
+            helpers.reply_to_comment(payload, get_installation_access_token(installation_id))
         
+    # elif payload['action'] == 'opened' and 'issue' in payload:
+    #     issue_number = payload['issue']['number']
+    #     issue_title = payload['issue']['title']
+    #     issue_body = payload['issue']['body']
 
+    #     if "CREATE" in issue_title:
+    #         helpers.create_files(payload, get_installation_access_token(installation_id))
+    #     elif "DOC" in issue_title:
+    #         helpers.document_code(payload, get_installation_access_token(installation_id))
     else:
         # Handle other events
         print(f'Received event: {event}')

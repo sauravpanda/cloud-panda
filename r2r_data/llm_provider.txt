@@ -1,0 +1,28 @@
+LLM Provider Configuration Guide
+LiteLLM is the default LLM provider for R2R due to its adherence to the OpenAI API specifications and its wide support for many AI providers. The quick start guide below, borrowed from LiteLLM's documentation, shows how to use it. To fully utilize this library, simply specify litellm as the llm provider in your application's config.json and define your preferred model as an argument in the configuration.
+
+Basic usage
+from litellm import completion
+import os
+ 
+## set ENV variables
+os.environ["OPENAI_API_KEY"] = "your-api-key"
+ 
+response = completion(
+  model="gpt-3.5-turbo", 
+  messages=[{ "content": "Hello, how are you?","role": "user"}]
+)
+Streaming
+Set stream=True in the completion args.
+
+from litellm import completion
+import os
+ 
+## set ENV variables
+os.environ["OPENAI_API_KEY"] = "your-api-key"
+ 
+response = completion(
+  model="gpt-3.5-turbo", 
+  messages=[{ "content": "Hello, how are you?","role": "user"}],
+  stream=True,
+)
