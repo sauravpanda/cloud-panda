@@ -1,3 +1,5 @@
 flask==3.0.2
 requests==2.31.0
 PyJWT==2.8.0
+cryptography==42.0.5
+asyncio==3.4.3

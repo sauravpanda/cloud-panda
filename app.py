@@ -3,7 +3,10 @@ import requests
 import os
 import time
 import jwt
-
+import json
+import helpers
+import r2r_client
+import asyncio
 app = Flask(__name__)
 
 # GitHub App configuration
@@ -13,6 +16,14 @@ GITHUB_APP_WEBHOOK_SECRET = os.environ.get('GITHUB_APP_WEBHOOK_SECRET')
 # GitHub API endpoints
 GITHUB_API_BASE_URL = 'https://api.github.com'
 GITHUB_APP_INSTALLATION_URL = f'{GITHUB_API_BASE_URL}/app/installations'
+
+# Manual Installation ID
+
+def run_async(func):
+    def wrapper(*args, **kwargs):
+        thread = threading.Thread(target=func, args=args, kwargs=kwargs)
+        thread.start()
+    return wrapper
 
 def generate_jwt():
     # Define the time the JWT was issued and its expiration time
@@ -44,7 +55,7 @@ def get_installations():
     return response.json()
 
 
-def get_installation_access_token(installation_id, permissions):
+def get_installation_access_token(installation_id, permissions=None):
     headers = {
         'Authorization': f'Bearer {generate_jwt()}',
         'Accept': 'application/vnd.github.v3+json'
@@ -60,7 +71,8 @@ def get_installation_access_token(installation_id, permissions):
 def handle_webhook():
     payload = request.get_json()
     event = request.headers.get('X-GitHub-Event')
-
+    print(json.dumps(payload, indent=2))
+    installation_id = payload["installation"]["id"]
     if event == 'push':
         # Handle push event
         repository = payload['repository']['full_name']
@@ -79,7 +91,29 @@ def handle_webhook():
         # Perform desired actions based on the pull request event data
         print(f'Received pull request event with action: {action}')
         print(f'Pull request number: {pull_request_number}')
+        repo_owner = payload["repository"]["owner"]["login"]
+        repo_name = payload["repository"]["name"]
+        pull_number = payload["pull_request"]["number"]
+        print("Running code review")
+
+        helpers.review_code(payload, get_installation_access_token(installation_id))
+        
         # Add your custom logic here
+
+    elif payload['action'] == 'created' and 'comment' in payload:
+        # Extract relevant information from the payload
+        helpers.reply_to_comment(payload, get_installation_access_token(installation_id))
+    elif payload['action'] == 'opened' and 'issue' in payload:
+        issue_number = payload['issue']['number']
+        issue_title = payload['issue']['title']
+        issue_body = payload['issue']['body']
+
+        if "CREATE" in title:
+            helpers.create_files(payload, get_installation_access_token(installation_id))
+        elif "DOC" in title:
+            helpers.document_code(payload, get_installation_access_token(installation_id))
+    # elif payload["action"] == "opened" or payload["action"] == "synchronize":
+        
 
     else:
         # Handle other events
@@ -90,13 +124,10 @@ def handle_webhook():
 
 
 # GitHub App authentication
-@app.route('/repos')
-def github_app_auth():
-    access_token = get_installations()
-    return jsonify({'access_token': access_token})
-
-
+@app.route('/')
+def hello():
+    return jsonify({'message': "Hello World!!"})
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port="80")
